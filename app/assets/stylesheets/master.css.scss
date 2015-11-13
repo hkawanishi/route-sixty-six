@@ -1,3 +1,14 @@
+.booyah-box {
+  -moz-box-shadow: 1px 1px 2px 0 #d0d0d0;
+  -webkit-box-shadow: 1px 1px 2px 0 #d0d0d0;
+  box-shadow: 1px 1px 2px 0 #d0d0d0;
+  background: rgba(86, 61, 124, 0.15);;
+  border: 1px solid #ccc;
+  border-color: #e4e4e4 #bebebd #bebebd #e4e4e4;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  padding: 20px;
+}
 body {
 	background:url('/assets/green_dust_scratch.png');
   font-family: "Palatino Linotype", Palatino, Palladio, "URW Palladio L", "Book Antiqua", Baskerville, "Bookman Old Style", "Bitstream Charter", "Nimbus Roman No9 L", Garamond, "Apple Garamond", "ITC Garamond Narrow", "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif;
@@ -6,10 +17,10 @@ body {
 header {
 	background:
 		linear-gradient(
-      rgba(0, 0, 0, 0.5),
-      rgba(0, 0, 0, 0.5)
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.2)
     ),
-    url('/assets/route-66.jpg'); 
+    url('/assets/route-66-2.jpg') center; 
  		background-size: cover;
   height: 100vh;
 }
@@ -52,11 +63,6 @@ header {
 	color: #FFF;
 }
 
-p {
-  margin: 0;
-  font-size: 1.3rem;
-}
-
 main {
   margin: 20px 20px 20px 20px;
   padding: 20px;
@@ -64,20 +70,17 @@ main {
 main h2 {
   font-size: 2rem;
 }
-.booyah-box {
-  -moz-box-shadow: 1px 1px 2px 0 #d0d0d0;
-  -webkit-box-shadow: 1px 1px 2px 0 #d0d0d0;
-  box-shadow: 1px 1px 2px 0 #d0d0d0;
-  background: #fff;
-  border: 1px solid #ccc;
-  border-color: #e4e4e4 #bebebd #bebebd #e4e4e4;
-  margin-top:10px;
-  //margin-bottom:15px;
-  padding:20px;
+main p {
+  margin: 0;
+  font-size: 1.6rem;
 }
 .clear {
-    clear: both;
+  clear: both;
 }
+.row .info h2{
+	text-align: center;
+}
+
 
 
 
