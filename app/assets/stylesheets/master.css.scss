@@ -6,7 +6,7 @@
   border: 1px solid #ccc;
   border-color: #e4e4e4 #bebebd #bebebd #e4e4e4;
   margin-top: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   padding: 20px;
 }
 body {
@@ -77,9 +77,19 @@ main p {
 .clear {
   clear: both;
 }
-.row .info h2{
+.more_info h1{
 	text-align: center;
 }
+.row .info h2{
+	text-align: center;
+	border: 2px solid black;
+	padding: 5px;
+	color: blue;
+}
+.row .info p {
+	text-align: center;
+}
+
 
 
 
