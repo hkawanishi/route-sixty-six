@@ -6,6 +6,8 @@ Route66::Application.routes.draw do
   root 'walks#index'
   # root 'welcome#index'
 
+  resources :walks
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
