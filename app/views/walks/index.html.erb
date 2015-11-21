@@ -1,48 +1,9 @@
-<header>
-  <div class="title">
-    <h1>Let's Walk Route 66!</h1>
-    <h3> (Virtually...)</h3><br />
-    <small>Scroll for more</small>
-  </div>
-</header>
+<div class="booyah-box col-xs-10 col-xs-offset-1">
+<%= link_to 'Enter Daily Steps', new_walk_path, :class => 'btn btn-primary' %>
+	<% @walks.reverse_each do |walk| %>
+	  <div>
+	    <h3 class="text-center">Date: <%= walk.date %>: Step:<%= walk.step %></h3>
+	  </div>
 
-<main>
-	<div class= "more_info booyah-box">
-		<h1>Information About the <em>Route 66 Virtual Walk</em></h1>
-	</div>
-	<div class="clear"></div>
-	<div class="row">
-	  <div class="info col-md-4 col-xs-12">
-	  		<h2>About the Site</h2>
-	  		<%= image_tag "/assets/route-66-3.jpg", :class =>"img-responsive", id: 'image_id', id: 'smaller_image_id'%>
-			  <p><em>Route 66 Virtual Walk</em> is a website that motivates walkers by giving them a goal.  The goal is to, eventually, walk the length of Route 66.  The site tracks daily steps and distance walked, and displays a map showing how far users have walked.  Using this site, we hope our users will not only be excited about walking but will also be interested in learning about Route 66, and decide to take road trip and actually drive a portion of Route 66 someday.</p>
-		</div>
-		<div class="info col-md-4 col-xs-12">
-	  		<h2>How to Use</h2>
-			  <p>Using the <em>Route 66 Virtual Walk program</em> is very easy!  Sign up by entering a username and password, and enter a stride length either in centimeter or in inches.  All you have to do is to enter your daily steps which can be measured by using a pedometer or a smart phone.  The site will calculate the distance you have travelled along and will put a pin in the map showing how far you have walked.</p>
-			  <%= image_tag "/assets/route-66-4.jpg", :class =>"img-responsive", id: 'image_id', id: 'smaller_image_id' %>
-		</div>
-		<div class="info col-md-4 col-xs-12">
-	  		<h2>About Route 66</h2>
-	  		<%= image_tag "/assets/route-66-5.jpg", :class =>"img-responsive", id: 'image_id', id: 'smaller_image_id' %>
-			  <p>Commonly known as the "Main Street of America", Route 66 was one of the the first transcontinental highways in the U.S.  The highway originally ran from Chicago to Los Angeles, covering a total of 2,448 miles (3,940 km).  Route 66 underwent many changes and was officially removed from the US highway system in 1985.  However, a great deal of Route 66 remains paved and useable, and many people still drive and enjoy it.</p>
-
-		</div>
-	</div>
-
-</main>
-<hr />
-<div class="container">
-  <div class="col-xs-6">
-  </div>
-  <div class="col-xs-6">
-    <em>Created by <a href="https://github.com/hkawanishi" target="_blank">Hiromi</a></em><br/>
-    Want to build your own Web App just like this site?- <a href="http://thefirehoseproject.com" target="_blank">Learn how to code here</a>
-    <br /><br />
-  </div>
+	<% end %>
 </div>
-
-
-
-
-
