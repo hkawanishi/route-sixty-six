@@ -1,4 +1,5 @@
 class WalksController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @walks = Walk.all
@@ -9,7 +10,7 @@ class WalksController < ApplicationController
   end
 
   def create
-    Walk.create(walk_params)
+    current_user.walks.create(walk_params)
     redirect_to walks_path
   end
 
@@ -17,7 +18,7 @@ class WalksController < ApplicationController
   #    @walk = Walk.all
   #  end
 
-  #  private
+  private
 
   def walk_params
     params.require(:walk).permit(:date, :step)

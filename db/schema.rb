@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151210232024) do
+ActiveRecord::Schema.define(version: 20151211042709) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,8 +42,10 @@ ActiveRecord::Schema.define(version: 20151210232024) do
     t.integer  "step_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "walks", ["step_id"], name: "index_walks_on_step_id", using: :btree
+  add_index "walks", ["user_id"], name: "index_walks_on_user_id", using: :btree
 
 end
