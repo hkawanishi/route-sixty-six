@@ -7,7 +7,9 @@ Route66::Application.routes.draw do
   root 'static_pages#index'
   # root 'welcome#index'
 
-  resources :walks
+  namespace :walker do
+    resources :walks, :only => [:index, :new, :create, :show]
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
