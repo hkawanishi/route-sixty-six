@@ -31,8 +31,13 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <!--a href="#">Link</a-->
-          <%= link_to 'Walk Stat.', walks_path %>
+          <% if user_signed_in? %>
+            <li><%= link_to 'Sign out', destroy_user_session_path %></li>
+            <%= link_to 'Walk Stat.', walks_path %>
+          <% else %>
+            <li><%= link_to 'Sign in', new_user_session_path %></li>
+            <li><%= link_to 'Sign up', new_user_registration_path %></li>
+          <%end %>
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->
