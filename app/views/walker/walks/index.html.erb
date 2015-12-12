@@ -3,10 +3,16 @@
 <br /><br />
 <% totaldistance = 0 %>
 <% @walks.each do |walk| %>
-  <% totaldistance = walk.step * 2.33 * 0.000189 + totaldistance %>
-<% end %>
+  <% totaldistance = walk.step * @stepconversion * @distanceconversion + totaldistance %>
+<% end %> 
 <div id="total_distance">
-  <h3>Total Distance : <%= totaldistance.round(2) %> Miles</h3>
+  <h3>Total Distance : <%= totaldistance.round(2) %>
+    <% if @current_user_strideunit == 1 %>
+      Miles
+    <% else %>
+      Km
+    <% end %>
+  </h3>
 </div>
   <br /><br />
   <div class="CSSTableGenerator" >
@@ -19,14 +25,15 @@
                   Steps
               </td>
               <td>
-                  Distance (Miles)
+                  <% if @current_user_strideunit == 1 %>
+                    Distance (Miles)
+                  <% else %>
+                    Distance (Km)
+                  <% end %>
               </td>
           </tr>
           <% @walks.reverse_each do |walk| %>
-            <% walk.distance = walk.step * 2.33 * 0.000189 %>
-            <!-- default stride 28 inches = 2.33 ft -->
-            <!-- times 0.000442 to convert it to mile -->
-            <!-- this will be a user input later -->
+            <% walk.distance = walk.step * @stepconversion * @distanceconversion  %>
             <tr>
                 <td >
                     <%= walk.date %>

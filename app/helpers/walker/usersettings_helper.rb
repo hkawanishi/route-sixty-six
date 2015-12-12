@@ -1,0 +1,2 @@
+module Walker::UsersettingsHelper
+end
