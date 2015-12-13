@@ -1,0 +1,21 @@
+<div class="booyah-box col-xs-10 col-xs-offset-1">
+  <h1>Your Current Setting</h1>
+  <h4>Step Length: <%= @current_user_stride %></h4>
+  <h4>Step Length Unit: 
+    <% if @current_user_strideunit == 1 %>
+      inches
+    <% else %>
+      cm
+    <% end %>
+  </h4>
+  <h4>Distance Unit:
+    <% if @current_user_distanceunit == 1 %>
+      miles
+    <% else %>
+      km
+    <% end %>
+  </h4>
+
+  <br /><br />
+  <h4><%= link_to 'Update User Setting', new_walker_usersetting_path %></h4>
+</div>
