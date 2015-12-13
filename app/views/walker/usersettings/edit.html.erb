@@ -1,0 +1,22 @@
+<div class="booyah-box col-xs-10 col-xs-offset-1">
+
+  <%= simple_form_for @current_data, :url => walker_usersetting_path(@current_data) do |f| %>
+    <h4>Enter Your Stride Length (use round number)</h4>
+    <%= f.label "Your Step Length:" %>
+    <%= f.input :userstride %>
+  
+    <br />
+    <br />
+    Default step length unit is in inches.  Uncheck below if you want it in 'cm'.
+    <br />
+    <%= f.check_box :strideunit %> <br />
+    <br />
+    <br />
+    Default distance is in 'miles'.  Uncheck below if you want it in 'km'.
+    <br />
+    <%= f.check_box :distanceunit %> <br />
+    <br />
+    <br />
+    <%= f.submit 'Create', :class => 'btn btn-primary' %>
+  <% end %>
+</div>

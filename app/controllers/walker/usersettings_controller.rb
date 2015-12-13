@@ -15,8 +15,19 @@ class Walker::UsersettingsController < ApplicationController
   end
 
   def index
-    @usersettings = Usersetting.where(user_id: [current_user.id])
+    @usersetting = Usersetting.where(user_id: [current_user.id])
     user_step_data()
+  end
+
+  def edit
+    #@usersetting = Usersetting.where(user_id: [current_user.id])
+    @current_data = @current_user_data = Usersetting.where(user_id: [current_user.id]).last
+  end
+
+  def update
+    @usersetting = Usersetting.find(params[:id])
+    @usersetting.update!(usersetting_params)
+    redirect_to walker_usersettings_path
   end
 
   private
@@ -27,11 +38,7 @@ class Walker::UsersettingsController < ApplicationController
 
   def user_step_data
     @current_user_data = Usersetting.where(user_id: [current_user.id]).last
-    if @current_user_data.nil?
-      @current_user_stride = 28
-      @current_user_strideunit = 1
-      @current_user_distanceunit = 1
-    else
+    if @current_user_data.present?
       @current_user_stride = @current_user_data.userstride
       @current_user_strideunit = @current_user_data.strideunit
       @current_user_distanceunit = @current_user_data.distanceunit

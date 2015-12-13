@@ -11,7 +11,6 @@ class Walker::WalksController < ApplicationController
 
   def new
     @walk = Walk.new
-    redirect_to walker_usersettings_path
   end
 
   def create
