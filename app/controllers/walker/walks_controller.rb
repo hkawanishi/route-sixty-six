@@ -15,8 +15,11 @@ class Walker::WalksController < ApplicationController
 
   def create
     @walk = current_user.walks.create(walk_params)
-    #redirect_to walker_walk_path(@walk)
-    redirect_to walker_walks_path
+    if @walk.valid?
+      redirect_to walker_walks_path
+    else
+      render :new, :status => :unprocessable_entry
+    end
   end
 
   private
