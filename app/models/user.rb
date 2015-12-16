@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
 
   has_many :walks
   has_many :usersettings
+  has_many :locations
 end

@@ -7,14 +7,17 @@
   
     <br />
     <br />
-    Default step length unit is in inches.  Uncheck below if you want it in 'cm'.
+    Step length unit:
     <br />
-    <%= f.check_box :strideunit %> <br />
+    <!--%= f.check_box :strideunit %--> <br />
+    <%= f.collection_radio_buttons :strideunit, [[true, 'inches'], [false, 'cm']], :first, :last %>
     <br />
     <br />
-    Default distance is in 'miles'.  Uncheck below if you want it in 'km'.
+    Distance unit:
     <br />
-    <%= f.check_box :distanceunit %> <br />
+    <!--%= f.check_box :distanceunit %--> 
+     <%= f.collection_radio_buttons :distanceunit, [[true, 'miles'], [false, 'km']], :first, :last %>
+    <br />
     <br />
     <br />
     <%= f.submit 'Create', :class => 'btn btn-primary' %>

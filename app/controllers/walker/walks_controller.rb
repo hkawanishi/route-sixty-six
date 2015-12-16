@@ -4,8 +4,8 @@ class Walker::WalksController < ApplicationController
   def index
     #@walks = Walk.all
     # the following line will only display the current user
-    @usersettings = Usersetting.where(user_id: [current_user.id])
-    @walks = Walk.where(user_id: [current_user.id])
+    @usersettings = Usersetting.where(user_id: [current_user.id])  # change this like line 8
+    @walks = current_user.walks
     unit_conversion()
   end
 

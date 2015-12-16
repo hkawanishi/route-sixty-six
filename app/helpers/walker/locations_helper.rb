@@ -1,0 +1,2 @@
+module Walker::LocationsHelper
+end
