@@ -20,23 +20,10 @@
     console.log(long1);
     handler = Gmaps.build('Google');
     handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-    markers = handler.addMarkers([
-      {
-       //"lat": 41.8783968,
-       //"lng": -87.6171476,
-       "lat" : lat1,
-       "lng": long1,
-       "picture": {
-         "url": "http://people.mozilla.com/~faaborg/files/shiretoko/firefoxIcon/firefox-32.png",
-          "width":  32,
-          "height": 32
-        },
-        "infowindow": "hello!"
-       }
-    ]);
-  handler.bounds.extendWith(markers);
-  handler.fitMapToBounds();
-  });
+    markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    });
   </script>
 
 </div>
