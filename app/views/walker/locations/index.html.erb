@@ -14,16 +14,174 @@
   <div id="foo" data-lat="<%= @locations.find(1).latitude%>"</div>
   <div id="foo1" data-long="<%= @locations.find(1).longitude%>"</div>
   <script type="text/javascript">
+    
     var lat1 = $("#foo").data("lat");
     var long1 = $("#foo1").data("long");
-    console.log(lat1);
-    console.log(long1);
+    //console.log(lat1);
+    //console.log(long1);
+
+    var mapStyle = [
+    {
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "hue": "#ff4400"
+            },
+            {
+                "saturation": -68
+            },
+            {
+                "lightness": -4
+            },
+            {
+                "gamma": 0.72
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "labels.icon"
+    },
+    {
+        "featureType": "landscape.man_made",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "hue": "#0077ff"
+            },
+            {
+                "gamma": 3.1
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "stylers": [
+            {
+                "hue": "#00ccff"
+            },
+            {
+                "gamma": 0.44
+            },
+            {
+                "saturation": -33
+            }
+        ]
+    },
+    {
+        "featureType": "poi.park",
+        "stylers": [
+            {
+                "hue": "#44ff00"
+            },
+            {
+                "saturation": -23
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "hue": "#007fff"
+            },
+            {
+                "gamma": 0.77
+            },
+            {
+                "saturation": 65
+            },
+            {
+                "lightness": 99
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            {
+                "gamma": 0.11
+            },
+            {
+                "weight": 5.6
+            },
+            {
+                "saturation": 99
+            },
+            {
+                "hue": "#0091ff"
+            },
+            {
+                "lightness": -86
+            }
+        ]
+    },
+    {
+        "featureType": "transit.line",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "lightness": -48
+            },
+            {
+                "hue": "#ff5e00"
+            },
+            {
+                "gamma": 1.2
+            },
+            {
+                "saturation": -23
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            {
+                "saturation": -64
+            },
+            {
+                "hue": "#ff9100"
+            },
+            {
+                "lightness": 16
+            },
+            {
+                "gamma": 0.47
+            },
+            {
+                "weight": 2.7
+            }
+        ]
+    }
+];
+
     handler = Gmaps.build('Google');
-    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    handler.buildMap({ provider: {
+      zoom: 15,
+      center: new google.maps.LatLng(41.8783968,-87.6171476),
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      styles: mapStyle
+    }, internal: {id: 'map'}}, function(){
+
+    var circles = handler.addCircles(
+    [{ lat: 41.8783968, lng: -87.6171476, radius: 50 }],
+    { strokeColor: '#FF0000'}
+    );
+
+    var kmls = handler.addKml(
+       // { url: "http://scribblemaps.com/api/maps/8cuvanbqxg/kml" }
+       {url: "https://github.com/hkawanishi/route-sixty-six/tree/master/app/assets/kml/route66_start.kml"}
+      );
     markers = handler.addMarkers(<%=raw @hash.to_json %>);
     handler.bounds.extendWith(markers);
+    handler.bounds.extendWith(circles);
     handler.fitMapToBounds();
     });
+    
   </script>
 
 </div>
