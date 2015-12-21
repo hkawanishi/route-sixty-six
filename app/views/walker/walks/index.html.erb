@@ -1,6 +1,9 @@
 <div class="booyah-box col-xs-10 col-xs-offset-1">
 <%= link_to 'Enter Daily Steps', new_walker_walk_path, :class => 'btn btn-primary' %>
 <br /><br />
+User data setting is <%= @usersettings.userstride %>
+User data setting is <%= @current_user_data.userstride %>
+<br />
 <%= link_to 'Map', walker_locations_path, :class => 'btn btn-primary' %>
 <% totaldistance = 0 %>
 <% @walks.each do |walk| %>

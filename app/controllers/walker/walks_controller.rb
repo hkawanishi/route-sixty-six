@@ -1,10 +1,23 @@
+#require 'walk'
 class Walker::WalksController < ApplicationController
   before_action :authenticate_user!
+
+  #def index
+  #  if current_user.usersettings
+  #    puts "current user settings is #{current_user.usersettings}"
+  #    @current_user_setting = CurrentUserSetting.new_from_user_settings(current_user.usersettings)
+  #  else
+  #    @current_user_setting = CurrentUserSetting.new_from_defaults
+  #  end
+  #end
 
   def index
     #@walks = Walk.all
     # the following line will only display the current user
-    @usersettings = Usersetting.where(user_id: [current_user.id])  # change this like line 8
+    #@usersettings = Usersetting.where(user_id: [current_user.id])  # change this like line 8
+    #@usersettings = Usersetting.where(user_id: [current_user.id]).last # need .last in the end
+    @usersettings = current_user.usersettings.last
+
     @walks = current_user.walks
     unit_conversion()
   end
