@@ -8,14 +8,15 @@ end
 
 class CurrentUserSetting
 
+  attr_accessor :userstride, :strideunit, :distanceunit
+
   def self.new_from_user_settings(user_settings)
-    @strideunit = user_settings.strideunit
-    @distanceunit = user_settings.distanceunit
-    @userstride = user_settings.userstride
+    new(user_settings[:userstride], user_settings[:strideunit], user_settings[:distanceunit])
   end
 
+  # need to edit this
   def self.new_from_defaults
-    new(default_stride, default_stride_unit, default_distance_unit)
+    new(28, 1, 1)
   end
 
   def initialize(userstride, strideunit, distanceunit)

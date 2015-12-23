@@ -1,17 +1,17 @@
 <div class="booyah-box col-xs-10 col-xs-offset-1">
 <%= link_to 'Enter Daily Steps', new_walker_walk_path, :class => 'btn btn-primary' %>
 <br /><br />
-User data setting is <%= @usersettings.userstride %>
-User data setting is <%= @current_user_data.userstride %>
+step conversion is <%= @current_user_setting.step_conversion  %>
+distance conversion is <%= @current_user_setting.distance_conversion  %>
 <br />
 <%= link_to 'Map', walker_locations_path, :class => 'btn btn-primary' %>
 <% totaldistance = 0 %>
 <% @walks.each do |walk| %>
-  <% totaldistance = walk.step * @stepconversion * @distanceconversion + totaldistance %>
+  <% totaldistance = walk.step * @current_user_setting.step_conversion * @current_user_setting.distance_conversion+ totaldistance %>
 <% end %> 
 <div id="total_distance">
   <h3>Total Distance : <%= totaldistance.round(2) %>
-    <% if @current_user_distanceunit == 1 %>
+    <% if @current_user_setting.distanceunit == 1 %>
       Miles
     <% else %>
       Km
@@ -29,7 +29,7 @@ User data setting is <%= @current_user_data.userstride %>
                   Steps
               </td>
               <td>
-                  <% if @current_user_strideunit == 1 %>
+                  <% if @current_user_setting.strideunit == 1 %>
                     Distance (Miles)
                   <% else %>
                     Distance (Km)
@@ -37,7 +37,7 @@ User data setting is <%= @current_user_data.userstride %>
               </td>
           </tr>
           <% @walks.reverse_each do |walk| %>
-            <% walk.distance = walk.step * @stepconversion * @distanceconversion  %>
+            <% walk.distance = walk.step * @current_user_setting.step_conversion * @current_user_setting.distance_conversion  %>
             <tr>
                 <td >
                     <%= walk.date %>

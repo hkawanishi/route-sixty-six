@@ -5,6 +5,6 @@ class User < ActiveRecord::Base
     :recoverable, :rememberable, :trackable, :validatable
 
   has_many :walks
-  has_many :usersettings
+  has_one :usersetting
   has_many :locations
 end

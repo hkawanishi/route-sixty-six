@@ -10,13 +10,13 @@
     Step length unit:
     <br />
     <!--%= f.check_box :strideunit %--> <br />
-    <%= f.collection_radio_buttons :strideunit, [[true, 'inches'], [false, 'cm']], :first, :last %>
+    <%= f.collection_radio_buttons :strideunit, [[1, 'inches'], [0, 'cm']], :first, :last %>
     <br />
     <br />
     Distance unit:
     <br />
     <!--%= f.check_box :distanceunit %--> 
-     <%= f.collection_radio_buttons :distanceunit, [[true, 'miles'], [false, 'km']], :first, :last %>
+     <%= f.collection_radio_buttons :distanceunit, [[1, 'miles'], [0, 'km']], :first, :last %>
     <br />
     <br />
     <br />
