@@ -1,9 +1,6 @@
 <div class="booyah-box col-xs-10 col-xs-offset-1">
 <%= link_to 'Enter Daily Steps', new_walker_walk_path, :class => 'btn btn-primary' %>
 <br /><br />
-step conversion is <%= @current_user_setting.step_conversion  %>
-distance conversion is <%= @current_user_setting.distance_conversion  %>
-<br />
 <%= link_to 'Map', walker_locations_path, :class => 'btn btn-primary' %>
 <% totaldistance = 0 %>
 <% @walks.each do |walk| %>
