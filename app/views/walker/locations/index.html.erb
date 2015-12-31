@@ -32,15 +32,13 @@
        {url: "https://raw.githubusercontent.com/hkawanishi/route-sixty-six/master/app/assets/kml/route66_start1.kml"}
       );
 
-    markers = handler.addMarkers(<%=raw @hash.to_json %>);
-    //handler.bounds.extendWith(markers);
+    //markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    markers = handler.addMarkers(<%=raw @latlngdata[10][:lat], @latlngdata[10][:long] %>);
+    handler.bounds.extendWith(markers);
     handler.fitMapToBounds();
     });
     
   </script>
-  <%= @latlngdata %>
-  <br />
-  First data
-  <%= @latlngdata[0][:long] %>
+
 
 </div>
