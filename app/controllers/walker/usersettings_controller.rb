@@ -26,8 +26,14 @@ class Walker::UsersettingsController < ApplicationController
 
   def update
     @usersetting = Usersetting.find(params[:id])
-    @usersetting.update!(usersetting_params)
-    redirect_to walker_usersettings_path
+    if @usersetting.update(usersetting_params)
+      redirect_to walker_usersettings_path
+    else
+      @current_data = @usersetting
+      render :edit, :status => :unprocessable_entry
+    end
+    #@usersetting.update!(usersetting_params)
+    #redirect_to walker_usersettings_path
 
     #if @usersetting.userstride.integer?
     #  @usersetting.update!(usersetting_params)

@@ -28,9 +28,9 @@ class CurrentUserSetting
   def step_conversion
     @stepconversion = 1
     if @strideunit == 1 # in inches
-      @stepconversion = 0.00001578 * @userstride #convert it to in miles
+      @stepconversion = 0.00001578 * @userstride # convert it to in miles
     else
-      @stepconversion = 0.00001578 * 0.3937 * @userstride #convert it to miles
+      @stepconversion = 0.00001578 * 0.3937 * @userstride # convert it to miles
     end
     return @stepconversion
   end
