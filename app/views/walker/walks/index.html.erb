@@ -29,7 +29,8 @@
     <% end %>
   <% end %>
 
-  <div id="total_dist" data-totdist="<%= convert_totaldistance %>"</div>
+  <div id="foo" data-lat="<%= @current_lat%>"</div>
+  <div id="foo1" data-long="<%= @current_long%>"</div>
 
   <div style='width: 800px;'>
     <div id="map" style='width: 800px; height: 400px;'></div>
@@ -37,8 +38,11 @@
 
   <script type="text/javascript">
     
-    // tot_dist is used to calculate the current location.
-    var tot_dist = $("#total_dist").data("totdist");
+    // curr_lat and curr_long are close to current location.
+    //var curr_lat = $("#curr_lat").data("currlat");
+    //var curr_long = $("#curr_long").data("currlong");
+    var lat1 = $("#foo").data("lat");
+    var long1 = $("#foo1").data("long");
 
     handler = Gmaps.build('Google');
     handler.buildMap({ provider: {
@@ -50,20 +54,22 @@
 
     markers = handler.addMarkers([
     {
-      lat: 41.83326,
-      lng: -87.77535
+      //"lat": 41.83326,
+      //"lng": -87.77535
+      "lat": lat1,
+      "lng": long1
     }
     ]);
 
     var kmls = handler.addKml(
        {url: "https://raw.githubusercontent.com/hkawanishi/route-sixty-six/master/app/assets/kml/route66_start1.kml"}
     );
-
    
     handler.bounds.extendWith(markers);
     handler.getMap().setZoom(15)
     //handler.fitMapToBounds();
     });
+    
     
 </script>
 
