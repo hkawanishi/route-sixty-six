@@ -40,7 +40,7 @@ class CurrentUserSetting
     if @distanceunit == 1 # in mile
       @distanceconversion = 1  # keep it in mile
     else
-      @distanceconversion = 1.6093 # convert it ot km
+      @distanceconversion = 1.6093 # convert it to km
     end
     return @distanceconversion
   end

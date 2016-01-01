@@ -7,11 +7,29 @@
 
 <div class="booyah-box col-xs-10 col-xs-offset-1">
   <% totaldistance = 0 %>
+  <% convert_totaldistance = 0 %>
   <% @walks.each do |walk| %>
     <% totaldistance = walk.step * @current_user_setting.step_conversion * @current_user_setting.distance_conversion+ totaldistance %>
   <% end %> 
+  <% if @current_user_setting.distanceunit == 1 %>
+    <% convert_totaldistance = totaldistance * 1609.34 %>
+  <% else %>
+    <% convert_totaldistance = totaldistance * 1000 %>  
+  <% end %>
 
-<!--% if @location.latitude.present? && @location.longitude.present? %-->
+  <br />
+
+  <% @current_lat  = @latlngdata[0][:lat]%>
+  <% @current_long = @latlngdata[0][:long]%>
+  <% @latlngdata.each do |point| %>
+    <% if point[:dist] > convert_totaldistance %>
+      <% @current_lat = point[:lat] %>
+      <% @current_long = point[:long] %>
+      <% break %>
+    <% end %>
+  <% end %>
+
+  <div id="total_dist" data-totdist="<%= convert_totaldistance %>"</div>
 
   <div style='width: 800px;'>
     <div id="map" style='width: 800px; height: 400px;'></div>
@@ -19,34 +37,37 @@
 
   <script type="text/javascript">
     
-    //var lat1 = $("#foo").data("lat");
-    //var long1 = $("#foo1").data("long");
-    //console.log(lat1);
-    //console.log(long1);
+    // tot_dist is used to calculate the current location.
+    var tot_dist = $("#total_dist").data("totdist");
 
     handler = Gmaps.build('Google');
     handler.buildMap({ provider: {
-      //zoom: 15,
-      //center: new google.maps.LatLng(41.8783968,-87.6171476),
+      //zoom: 50,
+      //center: new google.maps.LatLng(41.83326,-87.77535),
       //mapTypeId: google.maps.MapTypeId.ROADMAP
       //styles: mapStyle
     }, internal: {id: 'map'}}, function(){
 
-    var kmls = handler.addKml(
-       // { url: "http://scribblemaps.com/api/maps/8cuvanbqxg/kml" }
-       {url: "https://raw.githubusercontent.com/hkawanishi/route-sixty-six/master/app/assets/kml/route66_start1.kml"}
-      );
+    markers = handler.addMarkers([
+    {
+      lat: 41.83326,
+      lng: -87.77535
+    }
+    ]);
 
-    //markers = handler.addMarkers(<%=raw @hash.to_json %>);
-    //handler.bounds.extendWith(markers);
-    handler.fitMapToBounds();
+    var kmls = handler.addKml(
+       {url: "https://raw.githubusercontent.com/hkawanishi/route-sixty-six/master/app/assets/kml/route66_start1.kml"}
+    );
+
+   
+    handler.bounds.extendWith(markers);
+    handler.getMap().setZoom(15)
+    //handler.fitMapToBounds();
     });
     
-  </script>
-
+</script>
 
 </div>
-<div class="booyah-box col-xs-10 col-xs-offset-1">
 <%= link_to 'Enter Daily Steps', new_walker_walk_path, :class => 'btn btn-primary' %>
 <br /><br />
 <!--%= link_to 'Map', @map_html, :class => 'btn btn-primary' %-->
@@ -93,6 +114,5 @@
             </tr>
           <% end %>
       </table>
-  </div>
 
 </div>
