@@ -44,4 +44,5 @@ class CurrentUserSetting
     end
     return @distanceconversion
   end
+
 end
