@@ -20,8 +20,8 @@ class Walker::UsersettingsController < ApplicationController
   end
 
   def edit
-    #@usersetting = Usersetting.where(user_id: [current_user.id])
-    @current_data = @current_user_data = Usersetting.where(user_id: [current_user.id]).last
+    @usersetting = Usersetting.where(user_id: [current_user.id]).last
+    #@current_data = @current_user_data = Usersetting.where(user_id: [current_user.id]).last
   end
 
   def update
@@ -29,7 +29,7 @@ class Walker::UsersettingsController < ApplicationController
     if @usersetting.update(usersetting_params)
       redirect_to walker_usersettings_path
     else
-      @current_data = @usersetting
+      #@current_data = @usersetting
       render :edit, :status => :unprocessable_entry
     end
     #@usersetting.update!(usersetting_params)
