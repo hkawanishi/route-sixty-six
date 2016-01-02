@@ -1,6 +1,6 @@
 def test_csvfile
 
-  csv_file = File.open("route66_illinois_map.csv", "r") 
+  csv_file = File.open("route66_il_mo.csv", "r") 
   puts csv_file.inspect
 
   ary_store = []
