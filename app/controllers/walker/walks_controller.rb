@@ -11,7 +11,7 @@ class Walker::WalksController < ApplicationController
     #@stepconversion = step_conversion
     #@distanceconversion = distance_conversion
     @walks = current_user.walks
-    csvfile = File.join(Rails.root, '/app/assets/kml/', 'route66_start1_new.csv')
+    csvfile = File.join(Rails.root, '/app/assets/kml/', 'route66_illinois_map.csv')
     @map_html = File.join(Rails.root, '/app/views/walker/walks/', 'map.html.erb')
     #@latlngdata = SmarterCSV.process("/vagrant/src/route66/app/assets/csv/route66_start1.csv")
     @latlngdata = SmarterCSV.process(csvfile)

@@ -1,13 +1,16 @@
 module GetDistanceFromKML
 
   def self.read_kml_file
-    found = false
     coord_line = ""
-    kmlfile = File.open("route66_start1.kml","r")
+    tessellate = false
+    kmlfile = File.open("route66_illinois_map.kml","r")
     kmlfile.readlines.each do |line|
-      if (line.include?("coordinates") && (found == false))
-        found = true
-        coord_line = line 
+      if (line.include?("tessellate"))
+        tessellate = true
+      end
+      if (line.include?("coordinates") && tessellate)
+        coord_line = coord_line + line 
+        tessellate = false
       end 
     end
     kmlfile.close
@@ -50,7 +53,7 @@ module GetDistanceFromKML
 
   def self.get_distance
     lat_long_ary = read_kml_file()
-    csvfile = File.open("route66_start1_new.csv", "w")
+    csvfile = File.open("route66_illinois_map.csv", "w")
     csvfile.write("id,long,lat,alt,dist\n")
 
     n = 0
@@ -71,3 +74,6 @@ module GetDistanceFromKML
 end
 
 GetDistanceFromKML.get_distance()
+
+
+
