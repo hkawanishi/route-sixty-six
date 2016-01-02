@@ -3,7 +3,7 @@ module GetDistanceFromKML
   def self.read_kml_file
     coord_line = ""
     tessellate = false
-    kmlfile = File.open("route66_missouri_map.kml","r")
+    kmlfile = File.open("route66_california_map.kml","r")
     kmlfile.readlines.each do |line|
       if (line.include?("tessellate"))
         tessellate = true
@@ -23,7 +23,7 @@ module GetDistanceFromKML
       string.split(",").each do |n|
         ary_each_string << n.to_f
       end
-      ary_each_string.unshift(index+4586)
+      ary_each_string.unshift(index+29929)
       ary_new << ary_each_string
       
     end
@@ -53,7 +53,7 @@ module GetDistanceFromKML
 
   def self.get_distance
     lat_long_ary = read_kml_file()
-    csvfile = File.open("route66_missouri_map.csv", "w")
+    csvfile = File.open("route66_california_map.csv", "w")
     csvfile.write("id,long,lat,alt,dist\n")
 
     n = 0
