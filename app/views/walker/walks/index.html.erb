@@ -65,8 +65,15 @@
     // preserveViewPort specifies that the map should not be adjusted to the bounds of the KmlLayer’s 
     // contents when showing the layer. By default, when displaying a KmlLayer, the map is zoomed and
     // positioned to show the entirety of the layer’s contents.
-    var kmlLayer = new google.maps.KmlLayer({
+    var kmlLayer1 = new google.maps.KmlLayer({
       url: 'https://raw.githubusercontent.com/hkawanishi/route-sixty-six/master/app/assets/kml/route66_illinois_map.kml',
+      suppressInfoWindows: true,
+      preserveViewport: true,
+      map: map
+    });
+
+    var kmlLayer2 = new google.maps.KmlLayer({
+      url: 'https://raw.githubusercontent.com/hkawanishi/route-sixty-six/master/app/assets/kml/route66_missouri_map.kml',
       suppressInfoWindows: true,
       preserveViewport: true,
       map: map
