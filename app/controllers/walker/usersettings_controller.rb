@@ -15,12 +15,13 @@ class Walker::UsersettingsController < ApplicationController
   end
 
   def index
-    @usersetting = Usersetting.where(user_id: [current_user.id])
+    #@usersetting = Usersetting.where(user_id: [current_user.id])
+    @usersetting = Usersetting.find_by(user_id: [current_user.id])
     user_step_data()
   end
 
   def edit
-    @usersetting = Usersetting.where(user_id: [current_user.id]).last
+    @usersetting = Usersetting.find_by(user_id: [current_user.id])
     #@current_data = @current_user_data = Usersetting.where(user_id: [current_user.id]).last
   end
 
