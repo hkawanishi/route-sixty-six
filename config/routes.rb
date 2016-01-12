@@ -8,7 +8,7 @@ Route66::Application.routes.draw do
   # root 'welcome#index'
 
   namespace :walker do
-    resources :usersettings
+    resource :usersetting
     resources :walks, :only => [:index, :new, :create, :show]
   end
 

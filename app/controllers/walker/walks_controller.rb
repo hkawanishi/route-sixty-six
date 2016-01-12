@@ -13,7 +13,7 @@ class Walker::WalksController < ApplicationController
     @walks = current_user.walks
     csvfile = File.join(Rails.root, '/app/assets/kml/', 'route66_complete.csv')
     @map_html = File.join(Rails.root, '/app/views/walker/walks/', 'map.html.erb')
-    #@latlngdata = SmarterCSV.process("/vagrant/src/route66/app/assets/csv/route66_start1.csv")
+    # import csv files as arrays of hashes
     @latlngdata = SmarterCSV.process(csvfile)
   end
 

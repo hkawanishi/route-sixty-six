@@ -158,38 +158,31 @@
     <% end %>
   </h3>
 </div>
-  <br /><br />
-  <div class="CSSTableGenerator" >
-      <table >
-          <tr>
-              <td>
-                  Date
-              </td>
-              <td >
-                  Steps
-              </td>
-              <td>
-                  <% if @current_user_setting.strideunit == 1 %>
-                    Distance (Miles)
-                  <% else %>
-                    Distance (Km)
-                  <% end %>
-              </td>
-          </tr>
-          <% @walks.reverse_each do |walk| %>
-            <% walk.distance = walk.step * @current_user_setting.step_conversion * @current_user_setting.distance_conversion  %>
-            <tr>
-                <td >
-                    <%= walk.date %>
-                </td>
-                <td>
-                    <%= walk.step %>
-                </td>
-                <td>
-                    <%= walk.distance.round(2) %>
-                </td>
-            </tr>
-          <% end %>
-      </table>
-
+<br /><br />
+<div class="CSSTableGenerator" >
+  <table id="distance_lists">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Steps</th>
+      <th>
+        <% if @current_user_setting.strideunit == 1 %>
+          Distance (Miles)
+        <% else %>
+          Distance (Km)
+        <% end %>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @walks.reverse_each do |walk| %>
+              <% walk.distance = walk.step * @current_user_setting.step_conversion * @current_user_setting.distance_conversion  %>
+      <tr>
+        <td><%= walk.date %></td>
+        <td><%= walk.step %></td>
+        <td><%= walk.distance.round(2) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  </table>
 </div>

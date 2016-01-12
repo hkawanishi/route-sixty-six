@@ -1,6 +1,27 @@
 <div class="booyah-box col-xs-10 col-xs-offset-1">
-  <h2>This is show page </h2>
-  <p><%= @usersetting.userstride %> Unit is : <%=@usersetting.strideunit%></p>
-  <p>Distance Unit is: <%= @usersetting.distanceunit %></p>
+  <h4><%=current_user.email %></h4>
+  <% if @usersetting.nil? %> 
+  <h4><%= link_to "Please click here to enter your initial setting.", new_walker_usersetting_path %> </h4>
+  <% else %>
 
-  <br/><br/>
+    <h1>Your Current Setting</h1>
+    <h4>Step Length: <%= @usersetting.userstride %></h4>
+    <h4>Step Length Unit: 
+      <% if @usersetting.strideunit == 1 %>
+        inches
+      <% else %>
+        cm
+      <% end %>
+    </h4>
+    <h4>Distance Unit:
+      <% if @usersetting.distanceunit == 1 %>
+        miles
+      <% else %>
+        km
+      <% end %>
+    </h4>
+
+    <br /><br />
+    <%= link_to 'Edit', edit_walker_usersetting_path, :class => 'btn btn-primary' %>
+  <% end %>
+</div>

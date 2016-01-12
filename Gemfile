@@ -50,6 +50,8 @@ gem 'underscore-rails'
 
 gem 'smarter_csv'
 
+gem 'jquery-datatables-rails', '~> 3.3.0'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
