@@ -9,7 +9,8 @@ Route66::Application.routes.draw do
 
   namespace :walker do
     resource :usersetting
-    resources :walks, :only => [:index, :new, :create, :show]
+    resources :walks
+    #resources :walks, :only => [:index, :new, :create, :show]
   end
 
   # Example of regular route:

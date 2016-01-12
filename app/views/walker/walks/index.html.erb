@@ -172,6 +172,7 @@
           Distance (Km)
         <% end %>
       </th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -181,6 +182,9 @@
         <td><%= walk.date %></td>
         <td><%= walk.step %></td>
         <td><%= walk.distance.round(2) %></td>
+        <td><%= link_to 'Destroy', walker_walk_path(walk),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
