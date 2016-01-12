@@ -12,7 +12,7 @@ class Walker::WalksController < ApplicationController
     #@distanceconversion = distance_conversion
     @walks = current_user.walks
     csvfile = File.join(Rails.root, '/app/assets/kml/', 'route66_complete.csv')
-    @map_html = File.join(Rails.root, '/app/views/walker/walks/', 'map.html.erb')
+    #@map_html = File.join(Rails.root, '/app/views/walker/walks/', 'map.html.erb')
     # import csv files as arrays of hashes
     @latlngdata = SmarterCSV.process(csvfile)
   end
@@ -34,6 +34,13 @@ class Walker::WalksController < ApplicationController
     else
       render :new, :status => :unprocessable_entry
     end
+  end
+
+  def destroy
+    @walk = Walk.find(params[:id])
+    @walk.destroy
+
+    redirect_to walker_walks_path
   end
 
   private

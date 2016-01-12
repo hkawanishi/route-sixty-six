@@ -27,7 +27,7 @@ class Walker::UsersettingsController < ApplicationController
   def show
     #@usersetting = Usersetting.find(params[:id])
     #@usersetting = Usersetting.find_by(user_id: [current_user.id])
-    find_current_user
+    find_current_usersetting
   end
 
   # no more index page correct?
@@ -38,7 +38,7 @@ class Walker::UsersettingsController < ApplicationController
 
   def edit
     #@usersetting = Usersetting.find_by(user_id: [current_user.id])
-    find_current_user
+    find_current_usersetting
 
     #@current_data = @current_user_data = Usersetting.where(user_id: [current_user.id]).last
   end
@@ -46,7 +46,7 @@ class Walker::UsersettingsController < ApplicationController
   def update
     #@usersetting = Usersetting.find(params[:id])
     #@usersetting = Usersetting.find_by(user_id: [current_user.id])
-    find_current_user
+    find_current_usersetting
     if @usersetting.update(usersetting_params)
       redirect_to walker_usersetting_path
     else
@@ -56,7 +56,7 @@ class Walker::UsersettingsController < ApplicationController
 
   private
 
-  def find_current_user
+  def find_current_usersetting
     @usersetting = Usersetting.find_by(user_id: [current_user.id])
   end
 
